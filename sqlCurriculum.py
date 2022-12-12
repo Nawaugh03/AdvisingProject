@@ -1,13 +1,5 @@
 import mysql.connector
-"""
-Making it a class for later :)
-class Cirriculum_Manager:
-    def __init__ (self,host=None,user=None,password=None,dbname=None,curriculums=[()]):
-        self.dbname=dbname
-        self.host=host
-        self.password=password
-        self.curriculums=curriculums
-"""
+
 mydb = mysql.connector.connect(
                     host='localhost', 
                     user='root',      
