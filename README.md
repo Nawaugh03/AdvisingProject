@@ -1,5 +1,5 @@
 # AdvisingProject
-Title: AdisingProject <to be determined in later date>
+Title: AdisingProject *to be determined in later date*
 Description: A program that organizes a students courses and share this information between student, advisor, and regstrar
 Author: Nicholas Waugh
 
