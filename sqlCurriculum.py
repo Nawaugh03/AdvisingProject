@@ -108,9 +108,10 @@ inputvalue="""INSERT INTO list(course, number, title, credits) VALUES
                        ('BUAD','420','International Business','3');"""
 
 #print(insert_Curriculum)
-#mycursor.execute(inputvalue)
-mycursor.execute("show tables;")
-myresult=mycursor.fetchall()
-print(myresult)
+mycursor.execute(inputvalue)
+mydb.commit()
+#mycursor.execute("show tables;")
+#myresult=mycursor.fetchall()
+#print(myresult)
 
 #print(type('hi'))
