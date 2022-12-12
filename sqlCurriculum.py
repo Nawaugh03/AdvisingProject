@@ -9,10 +9,10 @@ class Cirriculum_Manager:
         self.curriculums=curriculums
 """
 mydb = mysql.connector.connect(
-                    host='localhost', # Change these strings to 
-                    user='root',      #
-                    password='1234',  # 
-                    database='test'   # existing db name
+                    host='localhost', 
+                    user='root',      
+                    password='1234',  
+                    database='curriculum'   
                     )
 mycursor = mydb.cursor()
 
