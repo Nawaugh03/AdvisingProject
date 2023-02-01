@@ -161,26 +161,27 @@ class DBmanager():
                 tablecode+=f"PRIMARY KEY ({primkey})\n"
             tablecode+=");"
             rownum=1
-            print(tablecode)# execute statement
-            #a.execute(tablecode)
-            #a.close()
+            #print(tablecode)# execute statement
+            a.execute(tablecode)
+            a.close()
             """Place the content into the table in the sql system"""
-            contentcode=f"INSERT INTO {self.tables[tableindex].Name} ("
+            Insertcode=f"INSERT INTO {self.tables[tableindex].Name} ("
             totalrows=len(self.tables[tableindex].columnnames[0])
             for colname in self.tables[tableindex].columnnames[0]:
-                contentcode+=str(colname)
+                Insertcode+=str(colname)
                 if(rownum<totalrows):
-                    contentcode+=",\n"
+                    Insertcode+=","
                 else:
-                    contentcode+=")\n"
+                    Insertcode+=")\n"
                 rownum+=1
-
             totalrows=len(self.tables[tableindex].columnnames[0])
-            totalcontentnumber=len(self.tables[tableindex].Content)
-            colnum=1
-            contentcode+="VALUES"
+            
+            
             for items in (self.tables[tableindex].Content):
+                a=self.DBconnection.cursor()
                 rownum=1
+                contentcode=Insertcode
+                contentcode+="VALUES"
                 contentcode+="("
                 for itemindex in  range(len(self.tables[tableindex].columnnames[0])):
                     if("INT" in self.tables[tableindex].columntypes[itemindex]):
@@ -190,15 +191,12 @@ class DBmanager():
                         contentcode+=message
                     if(rownum<totalrows):
                         contentcode+=","
-                    elif(rownum==totalrows and colnum<totalcontentnumber):
-                        contentcode+="),\n"
                     else:
                         contentcode+=");"
                     rownum+=1
-                colnum+=1
-            print(contentcode) #executable statement
-            #a.execute(contentcode)
-            #a.close()
+                print(contentcode) #executable statement
+                a.execute(contentcode)
+                a.close()
 
 class Table:
     def __init__(self, Tablename, tablecontent=None, tabledescription=None):
@@ -259,7 +257,7 @@ if __name__ in "__main__":
     A.ExportFromCSV("Curriculums")
     #A.tables[0].showinfo()
     #print("\n")
-    A.UseDatabase("Curriculums")
+    A.UseDatabase("HawkDB")
     A.ImportTablestoSQL()
     #A.CreateNewDatabase("Curriculums")
     #A.ExportFromCSV("Curriculums")
