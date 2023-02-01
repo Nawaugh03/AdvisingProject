@@ -8,7 +8,7 @@ class DBmanager():
         self.username = username
         self.password = passwrd
 
-        if (self.isDbExist(self.databasename) or self.databasename==""):
+        if (self.databasename==""):
             self.DBconnection = mysql.connector.connect(host=self.hostname, user=self.username, password=self.password)
             self.tables=[]
         else:
@@ -163,6 +163,7 @@ class DBmanager():
             rownum=1
             #print(tablecode)# execute statement
             a.execute(tablecode)
+            self.DBconnection.commit()
             a.close()
             """Place the content into the table in the sql system"""
             Insertcode=f"INSERT INTO {self.tables[tableindex].Name} ("
@@ -196,6 +197,7 @@ class DBmanager():
                     rownum+=1
                 print(contentcode) #executable statement
                 a.execute(contentcode)
+                self.DBconnection.commit()
                 a.close()
 
 class Table:
@@ -207,8 +209,8 @@ class Table:
         if(tabledescription != None):
             self.Description=tabledescription
             for desc in self.Description:
-                self.columnname.append(str(desc[0]).replace('\'',''))
-                self.columntype.append(str(desc[1]).replace('b','').replace('\'',''))
+                self.columnnames.append(str(desc[0]).replace('\'',''))
+                self.columntypes.append(str(desc[1]).replace('b','').replace('\'',''))
         else:
             pass
 
@@ -249,15 +251,25 @@ Use cases:
     
     Complete csv->table
     table->sql put the table into sql, 1.) use database, 2.) 
-    XA.ImportToCSV(Table)//Take the content from Database, and convert the list to a table in a csv file ({COURSE, NUMBER, TITLE, CREDIT} ...)
-    XA.ExportFromCSV("Curriculum.csv")//Take name of file and convert the csv into the list then if the table does exist then edit the table by inserting the 
-"""
-if __name__ in "__main__":
+    A.ImportToCSV(Table)//Take the content from Database, and convert the list to a table in a csv file ({COURSE, NUMBER, TITLE, CREDIT} ...)
+    A.ExportFromCSV("Curriculum.csv")//Take name of file and convert the csv into the list then if the table does exist then edit the table by inserting the 
+   
+    Complete table->sql
     A = DBmanager("localhost", "root", "1234")
     A.ExportFromCSV("Curriculums")
-    #A.tables[0].showinfo()
-    #print("\n")
     A.UseDatabase("HawkDB")
     A.ImportTablestoSQL()
-    #A.CreateNewDatabase("Curriculums")
-    #A.ExportFromCSV("Curriculums")
+
+    Complete sql->table
+    A = DBmanager("localhost", "root", "1234","hawkdb")
+    A.tables[0].showinfo()
+    
+    Complete table->csv
+    A = DBmanager("localhost", "root", "1234","hawkdb")
+    A.ImportToCSV(A.tables[0])
+
+
+"""
+if __name__ in "__main__":
+    A = DBmanager("localhost", "root", "1234","hawkdb")
+    A.ImportToCSV(A.tables[0])
