@@ -1,14 +1,6 @@
 from DatabaseManager import DBmanager
 from queue import Queue
-"""
-This Script will fetch the sql and generate a student in the database
-    mydb = mysql.connector.connect(
-                    host='localhost', 
-                    user='root',      
-                    password='1234',   
-                    )
-    cursor=mydb.cursor()
-"""
+
 class course:
     def __init__(self,coursetype="N/A",coursenum=0,courseTitle="N/A",creditnum=0,prerequisite=[],courseid=0):
         self.coursetype=coursetype
@@ -71,19 +63,7 @@ class student:
             self.RemainingCourses.put(RemCourses)
 
 
-"""
-Use cases:
-    Complete{-A=DBmanager("localhost","root","1234","test") -print(A.tables)}
-    A.ImportToCSV("list")//Take the content from Database, and convert the list to a table in a csv file ({COURSE, NUMBER, TITLE, CREDIT} ...)
-    A.ExportFromCSV("Curriculum.csv")//Take name of file and convert the csv into the list
-    
-"""
 if __name__ in "__main__":
-    A = DBmanager("localhost", "root", "1234", "test")
-    print(A.tables[0].Description)
-    #A.ImportToCSV(A.tables[0])
-    #A.ExportFromCSV("list")
-    #A.DisplayTables()
-    #for i in range(len(A.tables[0].Content)):
-    #   print(A.tables[0].Content[i])
+    A = DBmanager("localhost", "root", "1234")
+   
 

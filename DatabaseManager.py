@@ -38,8 +38,12 @@ class DBmanager():
                 return True
         return False
     def isTableExist(self, Tablename):
-        for i in self.tables:
-            if(Tablename == i.Name):
+        cursor=self.DBconnection.cursor()
+        code=f"show tables;"
+        cursor.execute(code)
+        #print(Tablename)
+        for i in cursor.fetchone():
+            if(Tablename.lower() == i):
                 return True
         return False
     def CreateNewDatabase(self,dbname):
@@ -132,10 +136,23 @@ class DBmanager():
         #if (csvname == "list" or csvname == 'curriculum')
         #if Table does exist Alter the Table with the content
         #if Table doesn't exist Create a new table and insert content into the table
+    def DeleteTableFromSQL(self,Table):
+        #temp = mysql.connector.connect(host=self.hostname, user=self.username, password=self.password,database=self.databasename)
+        cursor=self.DBconnection.cursor()
+        code=f"""DROP TABLES {Table.Name};"""
+        cursor.execute(code)
+        self.DBconnection.commit()
+        #self.tables.remove(Table)
+        cursor.close()
     def ImportTablestoSQL(self):
         primkey = ""
         existprime=False
         for tableindex in range(len(self.tables)):#number of tables
+            if(self.isTableExist(self.tables[tableindex].Name)== True):
+                self.DeleteTableFromSQL(self.tables[tableindex])
+            else:
+                pass
+
             a = self.DBconnection.cursor()
             tablecode=f"CREATE TABLE {self.tables[tableindex].Name} (\n"
             rownum = 0
@@ -159,9 +176,11 @@ class DBmanager():
                     tablecode+="\n"
             if(existprime):
                 tablecode+=f"PRIMARY KEY ({primkey})\n"
-            tablecode+=");"
+                tablecode+=");"
+            else:
+                pass
             rownum=1
-            #print(tablecode)# execute statement
+            print(tablecode)# execute statement
             a.execute(tablecode)
             self.DBconnection.commit()
             a.close()
@@ -199,7 +218,6 @@ class DBmanager():
                 a.execute(contentcode)
                 self.DBconnection.commit()
                 a.close()
-
 class Table:
     def __init__(self, Tablename, tablecontent=None, tabledescription=None):
         self.Name=Tablename
@@ -271,5 +289,8 @@ Use cases:
 
 """
 if __name__ in "__main__":
-    A = DBmanager("localhost", "root", "1234","hawkdb")
-    A.ImportToCSV(A.tables[0])
+    #A = DBmanager("localhost", "root", "1234","hawkdb")
+    A = DBmanager("localhost", "root", "1234")
+    A.ExportFromCSV("Curriculums")
+    A.UseDatabase("HawkDB")
+    A.ImportTablestoSQL()
