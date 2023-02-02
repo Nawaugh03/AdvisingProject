@@ -289,8 +289,9 @@ Use cases:
 
 """
 if __name__ in "__main__":
+    pass
     #A = DBmanager("localhost", "root", "1234","hawkdb")
-    A = DBmanager("localhost", "root", "1234")
-    A.ExportFromCSV("Curriculums")
-    A.UseDatabase("HawkDB")
-    A.ImportTablestoSQL()
+    #A = DBmanager("localhost", "root", "1234")
+    #A.ExportFromCSV("Curriculums")
+    #A.UseDatabase("HawkDB")
+    #A.ImportTablestoSQL()
