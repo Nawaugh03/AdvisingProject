@@ -1,6 +1,7 @@
 from DatabaseManager import DBmanager
 from queue import Queue
-
+#A rough draft of the code below
+"""
 class course:
     def __init__(self,coursetype="N/A",coursenum=0,courseTitle="N/A",creditnum=0,prerequisite=[],courseid=0):
         self.coursetype=coursetype
@@ -61,7 +62,10 @@ class student:
     def GetRemainingCourses(self,RemCourses):
         for course in RemCourses:
             self.RemainingCourses.put(RemCourses)
+"""
 
+class AdvisingManager:
+    pass
 
 if __name__ in "__main__":
     A = DBmanager("localhost", "root", "1234")
