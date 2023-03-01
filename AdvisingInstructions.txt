@@ -1,0 +1,10 @@
+--Idea of advising script--
+
+Recommendation system
+-The program will have a sample basis to go off for recommended courses for the students
+-This sample only give the student a recommendation on their courses depending on their year or their
+completed prerequisetes.
+-The sample schedule is import from the database to the script and will be compared with the students
+courses from the database.
+
+
