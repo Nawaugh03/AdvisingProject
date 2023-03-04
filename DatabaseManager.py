@@ -285,13 +285,15 @@ Use cases:
     A.UseDatabase("HawkDB")
 """
 if __name__ in "__main__":
+    pass
+    """
     A = DBmanager("localhost", "root", "1234","hawkdb")
     A.DisplayTables() 
     A.ExportFromCSV("curriculums")
     #A.tables[0].showinfo()
     #A.UseDatabase("HawkDB")
     A.ImportTablestoSQL()
-    
+    """
     
     #
     #print(A.isTableExist(A.tables[0].Name))

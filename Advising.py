@@ -28,6 +28,7 @@ class Course:
         self.number=dataval[2]
         self.title=dataval[3]
         self.credits=dataval[4]
+        self.Status="X" #Status represents three symbols P=pass, F=failed, W=withdrawal, E=enrolled,~=for Don't need to take ,X=for nonselected 
         self.nextval=None
 class CourseList:
     def __init__(self,Listname:str):
@@ -38,42 +39,117 @@ class CourseList:
         newCourse=dataval
         if (self.headval is None):
             self.headval=newCourse
-            return
-        curr=self.headval
-        while(curr.nextval!=None):
+        else:
+            curr=self.headval
+            while(curr.nextval is not None):
                 curr=curr.nextval
-        curr.nextval = newCourse
+            curr.nextval = newCourse
        
     def PrintList(self):
         curr=self.headval
+        message=""
         if(curr!=None):
             print(f"{self.Listname}:")
             while(curr is not None):
-                print(str(curr.title)+"\n | \n V")
+                message+=str(curr.title)+"->"
                 curr=curr.nextval
-            print("NULL")
+            message+="NULL"
         else:
-            print("N/A")
-
-class Student:
-    def __init__(self):
-        self.totalcredit
-        self.Major
-        self.Courses=[]
+            message+="N/A"
+        print(message)
         
+    def Search(self, target:Course):
+        curr=self.headval
+        if(curr!=None):
+            while(curr is not None):
+                if(curr.CourseID in target.CourseID):
+                    return True
+                curr=curr.nextval
+        return False
+
+class Student: #This class will have the structured set of information of students
+    def __init__(self):
+        self.Name=""
+        self.StudentID=""
+        self.totalcredit=None
+        self.Major=""
+        self.Courses={}
+        self.CourseHistory={}
+    def addCourses(self,NewCourse:Course):
+        CourseName=str(NewCourse.title).upper()
+        if(self.Courses==[]):
+            NewCourseTree=CourseList(CourseName)
+            NewCourseTree.getCourse(NewCourse)
+            self.Courses.append(NewCourseTree)
+        else:
+            existingArea=False
+            #Check if there is an existing course list with the same course abrev. 
+            #if so, either insert course in existing course list or if the courselist doesn't exist
+            for i in self.Courses:  
+                if i.ListName == NewCourse.course:
+                    existingArea=True
+                    if(i.Search(NewCourse)==False):
+                        i.GetCourse(NewCourse)
+                    break
+            if(existingArea==False):
+                NewCourseTree=CourseList(CourseName)
+                NewCourseTree.getCourse(NewCourse)
+                self.Courses.append(NewCourseTree)
+                
 
 if __name__ in "__main__":
     A = DBmanager("localhost", "root", "1234","hawkdb")
-    CourseTree=CourseList("CSDP")
-    #print(A.tables[0].Content[0])
-    #A = DBmanager("localhost", "root", "1234")
-    #A.ExportFromCSV("curriculums")
-    #A.UseDatabase("HawkDB")
-    #A.ImportTablestoSQL()
-
+    Courses={}
+    CourseABVList=[]
     for i in range(len(A.tables[0].Content)):
         NewCourse=Course(A.tables[0].Content[i])
-        if ("CSDP" in str(A.tables[0].Content[i][1])):
-            CourseTree.getCourse(NewCourse)
-    CourseTree.PrintList()
+        CourseAbv=str(NewCourse.course).upper()
+        if(CourseAbv not in CourseABVList):
+            CourseABVList.append(CourseAbv)
+            NewCourseTree=CourseList(CourseAbv)
+            NewCourseTree.getCourse(NewCourse)
+            Courses[CourseAbv]=NewCourseTree
+        else:
+            Courses[CourseAbv].getCourse(NewCourse)
 
+        
+    for value in Courses.values():
+        value.PrintList()
+          
+    """
+    A = DBmanager("localhost", "root", "1234","hawkdb")
+    Courses=[]
+    for i in range(len(A.tables[0].Content)):
+        NewCourse=Course(A.tables[0].Content[i])
+        CourseName=str(NewCourse.title).upper()
+        if(Courses==[]):
+            NewCourseTree=CourseList(CourseName)
+            NewCourseTree.getCourse(NewCourse)
+            Courses.append(NewCourseTree)
+        else:
+            existingArea=False
+            #Check if there is an existing course list with the same course abrev. 
+            #if so, either insert course in existing course list or if the courselist doesn't exist
+            for i in Courses:  
+                if i.Listname == NewCourse.course:
+                    existingArea=True
+                    if(i.Search(NewCourse)==False):
+                        i.GetCourse(NewCourse)
+                    break
+            if(existingArea==False):
+                NewCourseTree=CourseList(CourseName)
+                NewCourseTree.getCourse(NewCourse)
+                Courses.append(NewCourseTree)
+    for i in Courses:
+        i.PrintList()
+"""
+"""
+    Code below is testcase of getting all the courses and set them in a course tree.
+    A = DBmanager("localhost", "root", "1234","hawkdb")
+    CourseTree=CourseList("CSDP")
+    for i in range(len(A.tables[0].Content)):
+        NewCourse=Course(A.tables[0].Content[i])
+        #if ("CSDP" in str(A.tables[0].Content[i][1])):
+        CourseTree.getCourse(NewCourse)
+    CourseTree.PrintList()
+"""
