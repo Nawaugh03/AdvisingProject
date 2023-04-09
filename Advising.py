@@ -29,6 +29,7 @@ class Course:
         self.title=dataval[3]
         self.credits=dataval[4]
         self.Status="X" #Status represents three symbols P=pass, F=failed, W=withdrawal, E=enrolled,~=for Don't need to take ,X=for nonselected 
+        self.Prerequisite=None
         self.nextval=None
 class CourseList:
     def __init__(self,Listname:str):
@@ -63,16 +64,13 @@ class CourseList:
         if(curr!=None):
             while(curr is not None):
                 if(curr.CourseID in target.CourseID):
+
                     return True
                 curr=curr.nextval
         return False
 
 class Student: #This class will have the structured set of information of students
     def __init__(self):
-        self.Name=""
-        self.StudentID=""
-        self.totalcredit=None
-        self.Major=""
         self.Courses={}
         self.CourseHistory={}
     def addCourses(self,NewCourse:Course):
@@ -98,6 +96,11 @@ class Student: #This class will have the structured set of information of studen
                 
 
 if __name__ in "__main__":
+    A=DBmanager("localhost","root","1234")
+    A.UseDatabase("MajorsTemplate")
+    
+    """
+    Get all courses, set them to a linked list, and store them into a dictionary. 
     A = DBmanager("localhost", "root", "1234","hawkdb")
     Courses={}
     CourseABVList=[]
@@ -115,7 +118,7 @@ if __name__ in "__main__":
         
     for value in Courses.values():
         value.PrintList()
-          
+    """   
     """
     A = DBmanager("localhost", "root", "1234","hawkdb")
     Courses=[]

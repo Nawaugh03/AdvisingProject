@@ -53,6 +53,12 @@ class DBmanager():
                     cursor.close()
                     return True
         return False
+    def removeTablefromList(self, Tablename):
+        for index in range(len(self.tables)):
+            if(Tablename.lower() in self.tables[index].Name.lower()):
+                self.tables.remove(self.tables[index])
+        print(self.tables)
+
     def CreateNewDatabase(self,dbname):
         if (self.isDbExist(dbname)):
             pass
@@ -127,25 +133,30 @@ class DBmanager():
     
     def ExportFromCSV(self, csvname):
         if (self.isTableExist(csvname) is False):
-            Newtable=Table(csvname)
-            Tablecolumnnames=None
-            Tablecontent=[]
-            with open(f"{csvname}.csv",'r')as csvfile:
-                reader=csv.reader(csvfile)
-                rownumber=0
-                for row in reader:
-                    if (rownumber==0):
-                        Tablecolumnnames=row
-                    elif(rownumber>0):
-                        Tablecontent.append(row)
-                        #print(Tablecontent)
-                    rownumber=rownumber+1
-            Newtable.GetColumnnames(Tablecolumnnames)
-            Newtable.Getcontent(Tablecontent)
-            Newtable.GenerateDatatypes()
-            self.tables.append(Newtable)  
+            pass
         else:
-            print("already exist")    
+            self.removeTablefromList(csvname)
+        Newtable=Table(csvname)
+        Tablecolumnnames=None
+        Tablecontent=[]
+        with open(f"{csvname}.csv",'r')as csvfile:
+            reader=csv.reader(csvfile)
+            rownumber=0
+            for row in reader:
+                if (rownumber==0):
+                    Tablecolumnnames=row
+                elif(rownumber>0):
+                    Tablecontent.append(row)
+                    #print(Tablecontent)
+                rownumber=rownumber+1
+        Newtable.GetColumnnames(Tablecolumnnames)
+        Newtable.Getcontent(Tablecontent)
+        Newtable.GenerateDatatypes()
+        self.tables.append(Newtable)
+        #Newtable.showinfo()
+        #print(self.tables)
+
+            #UPDate table
     def DeleteTableFromSQL(self,Table):
         #temp = mysql.connector.connect(host=self.hostname, user=self.username, password=self.password,database=self.databasename)
         cursor=self.DBconnection.cursor()
@@ -288,11 +299,13 @@ if __name__ in "__main__":
     pass
     """
     A = DBmanager("localhost", "root", "1234","hawkdb")
-    A.DisplayTables() 
+    #A.DisplayTables() 
     A.ExportFromCSV("curriculums")
+    #print(A.tables)
     #A.tables[0].showinfo()
     #A.UseDatabase("HawkDB")
     A.ImportTablestoSQL()
+    A.tables[0].showinfo() 
     """
     
     #
