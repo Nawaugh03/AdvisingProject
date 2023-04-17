@@ -26,8 +26,8 @@ class Course:
         self.number=dataval[2]
         self.title=dataval[3]
         self.credits=dataval[4]
-        self.CA=dataval[5]
-        self.Prerequisite=None
+        self.Prerequisite=[5]
+        self.area=dataval[6]
         self.nextval=None
 class CourseList:
     def __init__(self,Listname:str):
@@ -71,8 +71,18 @@ class Student: #This class will have the structured set of information of studen
     def __init__(self):
         self.Courses={}
         self.CourseHistory={}
+        self.Area={"CA1":9,"CA2SS":3,"CA2BS":3,"CA3":8,"CA4":4,"CA5":9,"CA6":4,"C0":50,"C0E":9,"MATHC0E":16,"ECONC0E":12, "ECONC0EBE":3,"ECONC0EABE":3,"M":0}
+    def addCourse(self, Course):
+        Area=Course.area
+        #print(Area not in self.Courses.keys())
+        if(Area not in self.Courses.keys()):
+           self.Courses[Area]= CourseList(Area)
+           self.Courses[Area].totalscore=self.Area[Area]
+        self.Courses[Area].getCourse(Course)
+    """
     def addCourses(self,NewCourse:Course):
         CourseName=str(NewCourse.title).upper()
+        CourseArea=str(NewCourse.area).upper()
         if(self.Courses==[]):
             NewCourseTree=CourseList(CourseName)
             NewCourseTree.getCourse(NewCourse)
@@ -91,11 +101,29 @@ class Student: #This class will have the structured set of information of studen
                 NewCourseTree=CourseList(CourseName)
                 NewCourseTree.getCourse(NewCourse)
                 self.Courses.append(NewCourseTree)
-                
+    """         
 
 if __name__ in "__main__":
-    A=DBmanager("localhost","root","1234")
-    
+    A = DBmanager("localhost", "root", "1234","hawkdb")
+    Philip=Student()
+    for i in range(len(A.tables[0].Content)):
+        NewCourse=Course(A.tables[0].Content[i])
+        Philip.addCourse(NewCourse)
+    Philip.Courses["CA1"].PrintList()
+    Philip.Courses["CA2SS"].PrintList()
+    Philip.Courses["CA2BS"].PrintList()
+    Philip.Courses["CA3"].PrintList()
+    Philip.Courses["CA4"].PrintList()
+    Philip.Courses["CA5"].PrintList()
+    Philip.Courses["CA6"].PrintList()
+    Philip.Courses["C0"].PrintList()
+    Philip.Courses["C0E"].PrintList()
+    Philip.Courses["MATHC0E"].PrintList()
+    Philip.Courses["ECONC0E"].PrintList()
+    Philip.Courses["ECONC0EBE"].PrintList()
+    Philip.Courses["ECONC0EABE"].PrintList()
+    Philip.Courses["M"].PrintList()
+
     """
     Get all courses, set them to a linked list, and store them into a dictionary. 
     A = DBmanager("localhost", "root", "1234","hawkdb")

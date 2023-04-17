@@ -50,57 +50,57 @@ courseID,course,number,title,credits,prerequisite,Area
 1049,ENGL,310/W,Advanced Composition,3,1044/1045&1046/1047,CA5
 1050,CSDP,100,Computer Science Orientation,1,X,CA6
 1051,EXSC,111,Personalized Health Fitness,3,X,CA6
-1052,CSDP,221,Introduction to Computer Programming,4,1100/1098,Core
-1053,CSDP,222,Advabced Programming,4,1052,Core
-1054,CSDP,250,Data Structures,3,1053,Core
-1055,CSDP,301,Computer Organization & Assembly Language Programming,3,1053,Core
-1056,CSDP,305,Software Engineering I,3,1054,Core
-1057,CSDP,332,Internet Programming,3,1053,Core
-1058,CSDP,351,Computer Architecture,3,1055,Core
-1059,CSDP,390,Social& Ethical and Legal Isssues in Computer Science,3,credits>=56,Core
-1060,CSDP,398,Computer Language Topics A: Java,3,1053,Core
-1061,CSDP,399,Computer Langauge Topics B: UNIX,3,1053,Core
-1062,CSDP,401,Operating Systems,3,1056&1053,Core
-1063,CSDP,402,Computer Networks,3,1054,Core
-1064,CSDP,403,Computer Language Theory,3,1055&1079,Core
-1065,CSDP,404,Database Management Systems,3,1054,Core
-1066,CSDP,450,Algorithms and Data Structures,3,1054&1079,Core
-1067,CSDP,490,Senior Design Project,3,credits>=90,Core
-1068,CSDP,341,Numerical Analysis I,3,1054&1076,Core elective
-1069,CSDP,395,Internship,3,credits>=56,Core elective
-1070,CSDP,405,Software Engineering II,3,1056,Core elective
-1071,CSDP,431,Data Warehosuing and Data Mining,3,1053&1077,Core elective
-1072,CSDP,442,Numerical Analysis II,3,1068,Core elective
-1073,CSDP,498,Selected Topics in Computer Science A,3,X,Core elective
-1074,CSDP,499,Selected Topics in Computer Science B,3,X,Core elective
-1075,MATH,350,Linear Programming,3,1102,Core elective
-1076,MATH,211,Calculus II,4,1043,Math Core elective
-1077,MATH,232,Introduction to Linear Algebra,3,1043,Math Core elective
-1078,MATH,309,Introduction to Probability,3,1043,Math Core elective
-1079,MATH,323,Introduction to Discrete Structures,3,1053,Math Core elective
-1080,MATH,360,Statistics for Scientist,3,1078,Math Core elective
-1081,ACCT,201,Introductory Financial Accounting,3,1100&1044/1045&1046/1047,Economic Core elective
-1082,ACCT,202,Introductory Corporate & Managerial Accounting/Hybrid,3,1081,Economic Core elective
-1083,MKTG,308,Principles of Marketing,3,1082&1012/1013&1014/1015,Economic Core elective BE
-1084,FINA,340,Financial Management,3,1082&1012/1013&1014/1015,Economic Core elective BE
-1085,BUAD,302,Management and Organizational Behavior,3,1082&!1012/!1013&1014/1015&1031&1025/1026,Economic Core elective BE
-1086,MKTG,312,Sales Management,3,1083,Economic Core elective ABE
-1087,MKTG,314,Retail Management,3,1083,Economic Core elective ABE
-1088,MKTG,315,E-Commerce,3,1083,Economic Core elective ABE
-1089,MKTG,401,Advertising Management,3,1083,Economic Core elective ABE
-1090,MKTG,404,Consumer Behavior and Theory,3,1083,Economic Core elective ABE
-1091,MKTG,410,Marketing Strategy and Policy,3,1083,Economic Core elective ABE
-1092,FINA,341,Investment and Security Analysis,3,1084,Economic Core elective ABE
-1093,FINA,440,Advanced Fiancial Management,3,1084,Economic Core elective ABE
-1094,FINA,441,Insurance and Business Risks,3,1084,Economic Core elective ABE
-1095,BUAD,242,The Legal Enviornment for Business,3,1085,Economic Core elective ABE
-1096,BUAD,303,Advanced Organizational Behavior,3,1085,Economic Core elective ABE
-1097,BUAD,420,International Business,3,1085,Economic Core elective ABE
-1101,BUAD,430,"Ethical, Economic, Managerial and Societal Considerations of Technological Information Systems",3,X,Economic Core elective ABE
-1098,BUAD,490,Senior Seminar in Business,3,Credits>=95,Economic Core elective ABE
-1099,MATH,110,Trigonometry and Analytic Geometry,3,1102,Misc
-1100,MATH,111,Elementary - Mathematical Analysis,4,1099&1101,Misc
-1101,MATH,109,College Algebra,3,1102,Misc
-1102,MATH,101,Intermediate Algebra,3,X,Misc
-1103,MATH,300,Foundation of Mathematics,3,1076,Misc
-1104,ENGL,1,English Proficiency Exam(EPE),0,X,Misc
+1052,CSDP,221,Introduction to Computer Programming,4,1100/1098,C0
+1053,CSDP,222,Advabced Programming,4,1052,C0
+1054,CSDP,250,Data Structures,3,1053,C0
+1055,CSDP,301,Computer Organization & Assembly Language Programming,3,1053,C0
+1056,CSDP,305,Software Engineering I,3,1054,C0
+1057,CSDP,332,Internet Programming,3,1053,C0
+1058,CSDP,351,Computer Architecture,3,1055,C0
+1059,CSDP,390,Social& Ethical and Legal Isssues in Computer Science,3,credits>=56,C0
+1060,CSDP,398,Computer Language Topics A: Java,3,1053,C0
+1061,CSDP,399,Computer Langauge Topics B: UNIX,3,1053,C0
+1062,CSDP,401,Operating Systems,3,1056&1053,C0
+1063,CSDP,402,Computer Networks,3,1054,C0
+1064,CSDP,403,Computer Language Theory,3,1055&1079,C0
+1065,CSDP,404,Database Management Systems,3,1054,C0
+1066,CSDP,450,Algorithms and Data Structures,3,1054&1079,C0
+1067,CSDP,490,Senior Design Project,3,credits>=90,C0
+1068,CSDP,341,Numerical Analysis I,3,1054&1076,C0E
+1069,CSDP,395,Internship,3,credits>=56,C0E
+1070,CSDP,405,Software Engineering II,3,1056,C0E
+1071,CSDP,431,Data Warehosuing and Data Mining,3,1053&1077,C0E
+1072,CSDP,442,Numerical Analysis II,3,1068,C0E
+1073,CSDP,498,Selected Topics in Computer Science A,3,X,C0E
+1074,CSDP,499,Selected Topics in Computer Science B,3,X,C0E
+1075,MATH,350,Linear Programming,3,1102,C0E
+1076,MATH,211,Calculus II,4,1043,MATHC0E
+1077,MATH,232,Introduction to Linear Algebra,3,1043,MATHC0E
+1078,MATH,309,Introduction to Probability,3,1043,MATHC0E
+1079,MATH,323,Introduction to Discrete Structures,3,1053,MATHC0E
+1080,MATH,360,Statistics for Scientist,3,1078,MATHC0E
+1081,ACCT,201,Introductory Financial Accounting,3,1100&1044/1045&1046/1047,ECONC0E
+1082,ACCT,202,Introductory Corporate & Managerial Accounting/Hybrid,3,1081,ECONC0E
+1083,MKTG,308,Principles of Marketing,3,1082&1012/1013&1014/1015,ECONC0EBE
+1084,FINA,340,Financial Management,3,1082&1012/1013&1014/1015,ECONC0EBE
+1085,BUAD,302,Management and Organizational Behavior,3,1082&!1012/!1013&1014/1015&1031&1025/1026,ECONC0EBE
+1086,MKTG,312,Sales Management,3,1083,ECONC0EABE
+1087,MKTG,314,Retail Management,3,1083,ECONC0EABE
+1088,MKTG,315,E-Commerce,3,1083,ECONC0EABE
+1089,MKTG,401,Advertising Management,3,1083,ECONC0EABE
+1090,MKTG,404,Consumer Behavior and Theory,3,1083,ECONC0EABE
+1091,MKTG,410,Marketing Strategy and Policy,3,1083,ECONC0EABE
+1092,FINA,341,Investment and Security Analysis,3,1084,ECONC0EABE
+1093,FINA,440,Advanced Fiancial Management,3,1084,ECONC0EABE
+1094,FINA,441,Insurance and Business Risks,3,1084,ECONC0EABE
+1095,BUAD,242,The Legal Enviornment for Business,3,1085,ECONC0EABE
+1096,BUAD,303,Advanced Organizational Behavior,3,1085,ECONC0EABE
+1097,BUAD,420,International Business,3,1085,ECONC0EABE
+1101,BUAD,430,"Ethical, Economic, Managerial and Societal Considerations of Technological Information Systems",3,X,ECONC0EABE
+1098,BUAD,490,Senior Seminar in Business,3,Credits>=95,ECONC0EABE
+1099,MATH,110,Trigonometry and Analytic Geometry,3,1102,M
+1100,MATH,111,Elementary - Mathematical Analysis,4,1099&1101,M
+1101,MATH,109,College Algebra,3,1102,M
+1102,MATH,101,Intermediate Algebra,3,X,M
+1103,MATH,300,Foundation of Mathematics,3,1076,M
+1104,ENGL,1,English Proficiency Exam(EPE),0,X,M
